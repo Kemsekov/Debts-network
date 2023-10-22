@@ -1,0 +1,7 @@
+A B {'debt': 5}
+A E {'debt': 2}
+B C {'debt': 6}
+B D {'debt': 3}
+C D {'debt': 3}
+D E {'debt': 2}
+E A {'debt': 6}
