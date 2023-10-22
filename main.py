@@ -1,25 +1,6 @@
 import networkx as nx
 import functools
 
-
-
-def decrease_debt(g : nx.DiGraph, node, amount):
-    """Decreases in and out debt by amount given, returning amount of debt left"""
-    for source in g.predecessors(node):
-        can_decrease=min(amount,g[source][node]['debt'])
-        g[source][node]['debt'] -= can_decrease
-        amount-=can_decrease
-    for target in g.successors(node):
-        can_decrease=min(amount,g[node][target]['debt'])
-        g[node][target]['debt'] -= can_decrease
-        amount-=can_decrease
-    return amount
-
-def node_in_debt(g : nx.DiGraph,node):
-    return sum([g[pred][node]['debt'] for pred in g.predecessors(node)])
-def node_out_debt(g : nx.DiGraph,node):
-    return sum([g[node][succ]['debt'] for succ in g.successors(node)])
-
 def reduce_debt_of_same_peoples(g : nx.DiGraph):
     edges = g.edges(data=True)
     for e in edges:
